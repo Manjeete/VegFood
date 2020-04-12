@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'partials/_alerts.html' %}
+
+<section class='signup'>
+    <div class="login-reg-panel">
+        <div class="login-info-box">
+            <h2>Have an account?</h2>
+            <p>Lorem ipsum dolor sit amet</p>
+            <label id="label-register" for="log-reg-show">Login</label>
+            <input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">
+        </div>
+                            
+        <div class="register-info-box">
+            <h2>Don't have an account?</h2>
+            <p>Lorem ipsum dolor sit amet</p>
+            <label id="label-login" for="log-login-show">Register</label>
+            <input type="radio" name="active-log-panel" id="log-login-show">
+        </div>
+                            
+        <div class="white-panel">
+            <div class="login-show">
+                <form action="{% url 'login' %}" method='POST'>
+                    {% csrf_token %}
+                    <h2>LOGIN</h2>
+                    <input type="text" name="login_username" placeholder="Username">
+                    <input type="password" name="login_password" placeholder="Password">
+                    <input type="submit" value="Login">
+                    <a href="">Forgot password?</a>
+                </form>
+            </div>
+            <div class="register-show">
+                <form action="{% url 'register' %}" method='POST'>
+                    {% csrf_token %}
+                    <h2>REGISTER</h2>
+                    <input type="text" name="register_name" placeholder="Name">
+                    <input type="text" name="register_username" placeholder="Username">
+                    <input type="email" name="register_email" placeholder="Email">
+                    <input type="password" name="register_password" placeholder="Password">
+                    <input type="submit" value="Register">
+                </form>    
+            </div>
+        </div>
+    </div>
+    
+</section>
+{% endblock %}
